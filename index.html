@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Um pedido especial</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+      overflow: hidden;
+    }
+    .container {
+      margin-left: 0px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      max-width: 80vw;
+      width: 350px;
+      height: auto; /* Adjust height to fit content */
+      z-index: 1; /* Ensure container is above hearts */
+    }
+    h1 {
+      font-size: 2rem;
+      color: #d6336c;
+      margin-bottom: 15px;
+    }
+    p {
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 25px;
+    }
+    /* Corações animados */
+    .heart {
+      position: absolute;
+      color: #ff4d6d;
+      font-size: 20px;
+      animation: float 6s linear infinite;
+      bottom: -10%; /* Start below the container */
+      z-index: 0; /* Ensure hearts are below the container */
+    }
+    @keyframes float {
+      from { transform: translateY(0) scale(1); opacity: 1; }
+      to { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+    }
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Oi... ❤️</h1>
+    <p>Errei, eu sei... mas sinto sua falta.  
+    Me dá uma chance pra recomeçar?</p>
+  </div>
+
+  <script>
+    // Gera corações subindo
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 500);
+
+  </script>
+</body>
+</html>
